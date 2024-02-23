@@ -1,11 +1,11 @@
 import '../App.css';
 import {Flex} from '@chakra-ui/react';
-import NavBar from '../com/NavBar';
+import NavBar from './NavBar';
 
-const HmePage = () =>{
+const HomePage = () =>{
     return(
         <NavBar/> 
     )
 }
 
-export default Homepage;
+export default HomePage;

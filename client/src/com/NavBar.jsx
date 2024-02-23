@@ -1,27 +1,32 @@
 import '../App.css';
-import { Flex, Heading, Button, Link } from '@chakra-ui/react';
-
+import { ShopRoute, HomeRoute, AuthRoute } from "../utils/const";
+import { Flex, Heading } from '@chakra-ui/react';
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
 const NavBar = () => {
     return (
         <Flex
             align={'center'}
             justify={'space-between'}
-            width={'100%'}
+            width={'94.7%'}
             boxShadow={'rgba(0, 0, 0, 0.24) 0px 3px 8px;'}
             borderRadius={'8px'}
             padding={'10px 50px'}
         >
             <Heading>Shopify</Heading>
             <Flex>
+                <Link to={ShopRoute}>
                 <Button colorScheme='gray' variant='ghost'>HorsShop</Button>
+                </Link> 
                 <Button colorScheme='gray' variant='ghost'>About</Button>
                 <Button colorScheme='gray' variant='ghost'>Products</Button>
+                
             </Flex>
             <Flex
-                width={'50px'}
-                justify={'space-between'}
+                // width={'50px'}
+                // justify={'space-between'}
             >
-                <Link>
+                <Link to={AuthRoute}>
                     <svg className='nav-icon' viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
                         <path fill="currentColor" d="M313.6 304c-28.7 0-42.5 16-89.6 16c-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4M400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4c14.6 0 38.3 16 89.6 16c51.7 0 74.9-16 89.6-16c47.6 0 86.4 38.8 86.4 86.4zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0S80 64.5 80 144s64.5 144 144 144m0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96s-96-43.1-96-96s43.1-96 96-96"/>
                     </svg>

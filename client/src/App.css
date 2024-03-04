@@ -16,3 +16,21 @@
 .heading:hover{
   scale: 1.1;
 }
+
+.ToTop-btn{
+  position: absolute;
+  bottom: 70px;
+  right: 50px;
+  cursor: pointer;
+  z-index: 9999;
+  border: none;
+  border-radius:  150px;
+  box-shadow:  1px 1px 40px rgb(27, 70, 68);
+  opacity: 0.8;
+  transition:  all 0.3s ease-in-out;
+}
+.ToTop-btn:hover{
+  box-shadow:  1px 1px 10px rgb(0, 214, 221);
+  opacity: 1;
+  cursor: pointer;
+}

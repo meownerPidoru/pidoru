@@ -1,5 +1,6 @@
 body{
   font-family: "Madimi One", sans-serif;
+  background-color: black;
 }
 .nav-icon{
   width: 21px;
@@ -21,6 +22,8 @@ body{
 }
 
 .ToTop-btn{
+  color: aliceblue;
+  background-color: #800000;
   position: absolute;
   bottom: 70px;
   right: 50px;
@@ -28,12 +31,12 @@ body{
   z-index: 9999;
   border: none;
   border-radius:  150px;
-  box-shadow:  1px 1px 40px rgb(27, 70, 68);
+  box-shadow:  1px 1px 40px rgb(140, 133, 4);
   opacity: 0.8;
   transition:  all 0.3s ease-in-out;
 }
 .ToTop-btn:hover{
-  box-shadow:  1px 1px 10px rgb(0, 214, 221);
+  box-shadow:  1px 1px 10px rgb(255, 126, 126);
   opacity: 1;
   cursor: pointer;
 }

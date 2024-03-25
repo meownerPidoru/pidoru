@@ -1,7 +1,7 @@
 import '../App.css';
 import { Flex, Heading, Button} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { ShopRoute, HomeRoute, AuthRoute } from '../utils/consts';
+import { ShopRoute, HomeRoute, AboutRoute, AuthRoute } from '../utils/consts';
 import colors from "../pages/colors";
 
 const NavBar = () => {
@@ -27,10 +27,11 @@ const NavBar = () => {
                         Shop
                     </Button>
                 </Link>
-                
+         
                 <Button  textColor={'#FFFFFF'} variant='ghost'>
                     About
                 </Button>
+              
                 <Button  textColor={'#FFFFFF'} variant='ghost'>
                     Products
                 </Button>

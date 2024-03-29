@@ -1,11 +1,45 @@
 import '../App.css';
-import { Flex, Heading, Button} from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Flex, Heading, Button, Select} from '@chakra-ui/react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShopRoute, HomeRoute, AboutRoute, AuthRoute } from '../utils/consts';
 import colors from "../pages/colors";
+import { useRef, useEffect, useState } from 'react' 
 
-const NavBar = () => {
-    const {wight} = colors();
+const NavBar = () => { 
+    const prevScrollY = useRef(0); 
+    const [isNavBarVisible, setIsNavBarVisible] = useState(true); 
+    const location= useLocation();
+      
+    useEffect(() => { 
+        const scroll = () =>{ 
+            const currentScrollY = window.scrollY; 
+            const scrollDirection = currentScrollY > prevScrollY.current ? "down" : "up"; 
+            if(scrollDirection === "down" && currentScrollY > 50){ 
+                setIsNavBarVisible(false) 
+            }else if(scrollDirection === "up" || currentScrollY <=50){ 
+                setIsNavBarVisible(true) 
+            } 
+            prevScrollY.current = currentScrollY; 
+        } 
+        window.addEventListener("scroll", scroll); 
+ 
+        return() => window.removeEventListener("scroll", scroll); 
+    }, []);
+    useEffect(() => {
+        const scrollToSection = window.location.hash.substring(1);
+
+        if(scrollToSection){
+            const section = document.getElementById(scrollToSection);
+            if(section){
+                section.scrollIntoView({
+                    behavior:"smooth",
+                })
+            }
+        }
+    }, [window.location.hash])
+
+
+
     return (
         <Flex
             align={'center'}
@@ -27,11 +61,11 @@ const NavBar = () => {
                         Shop
                     </Button>
                 </Link>
-         
+                <Link to={`${HomeRoute}#about`}>
                 <Button  textColor={'#FFFFFF'} variant='ghost'>
                     About
                 </Button>
-              
+              </Link>
                 <Button  textColor={'#FFFFFF'} variant='ghost'>
                     Products
                 </Button>

@@ -6,6 +6,8 @@ import colors from './colors';
 import ToTopButton from '../components/ToTopButton';
 import Sir from "../images/siir.png"
 import menu from '../components/menu';
+import CardItem from '../components/cardItem';
+import CardItem2 from '../components/cardItem2';
 
 
 
@@ -51,17 +53,36 @@ const HomePage = () =>{
                     <Flex
                         h={'100vh'}
                         w={'100%'}
+                        id='about'
                     >
-                        <Flex backgroundColor={'#45310c'} padding={'10px 50px'} flexDirection={'column'} justifyContent={'center'} w={'100%'} margin={'30px 0px 20px 0px'}> 
+                        <Flex backgroundColor={'#45310c'} padding={'10px 50px'} flexDirection={'column'} justifyContent={'center'} h={'200vh'} w={'100%'} margin={'30px 0px 20px 0px'}> 
                         <Text fontSize={'40px'} color={'#bfa471'}>Where are your sir?</Text> 
                         <AspectRatio ratio={16 / 9} width={"100%"} h={800} > 
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38946.80405791186!2d23.81995275841609!3d52.403499904577785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4720559c6df3f967%3A0x2cc7ba71f743e569!2z0JrQsNC80LXQvdC10YYsINCR0YDQtdGB0YLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sby!4v1711123453690!5m2!1sru!2sby"  ></iframe> 
                         </AspectRatio> 
+                        <Box>
+                            <Box>
+                                <Text>About us:</Text>
+                            </Box>
+                        </Box>
                         <Box mt={'20px'} w={'100%'} backgroundColor={'#6e6232'}>
                         <Text fontSize={'80px'} padding={'10px 50px'} margin={'30px 0px 20px 0px'}>Your Comments:</Text>
-                        <Box h={'400px'} w={'100%'}>
-                            <div backgroundColor={'#000000'}   h={'200px'}> </div>
-                        </Box>
+                        
+                        <Flex
+                            flexWrap={'wrap'}
+                            mt={'20px'}
+                            width={'90%'}
+                            justify={'center'}
+                            gap={'35px'}
+                            mb={'30px'}
+                        > 
+                            <CardItem />
+                            <CardItem />
+                            <CardItem />
+                            <CardItem />
+                            <CardItem2 />
+                            <CardItem />
+                        </Flex>
                         </Box>
                     </Flex>
                         <ToTopButton/>

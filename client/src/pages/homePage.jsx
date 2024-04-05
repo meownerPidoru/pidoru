@@ -8,12 +8,28 @@ import Sir from "../images/siir.png"
 import menu from '../components/menu';
 import CardItem from '../components/cardItem';
 import CardItem2 from '../components/cardItem2';
+import Loader from '../components/Loader';
+import { useEffect, useState } from 'react'; 
 
 
 
-const HomePage = () =>{
-
-    return(
+ 
+const HomePage = () =>{ 
+    const [isLoading, setIsLoading] = useState(true); 
+ 
+    useEffect(() => { 
+        const fetchData = async () => { 
+            await new Promise(resolve => setTimeout(resolve, 1000)); 
+            setIsLoading(false) 
+        } 
+        fetchData(); 
+    }, []) 
+ 
+    return( 
+        <> 
+            {isLoading ? ( 
+                <Loader /> 
+            ) : (
         <Box
             w={'100%'}
             bg={"black"}
@@ -90,7 +106,8 @@ const HomePage = () =>{
                     </Flex>
                 </Flex>
             {/* </Flex> */}
-       </Box>
+       </Box>)}</>
+
     )
     
 }

@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ShopRoute, HomeRoute, AboutRoute, AuthRoute } from '../utils/consts';
 import colors from "../pages/colors";
 import { useRef, useEffect, useState } from 'react' 
+import { observer } from 'mobx-react-lite';
 
 const NavBar = () => { 
     const prevScrollY = useRef(0); 
@@ -89,5 +90,5 @@ const NavBar = () => {
     );
   }
   
-  export default NavBar;
+  export default observer (NavBar);
   

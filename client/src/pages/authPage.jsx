@@ -1,7 +1,25 @@
 import NavBarSh from '../components/NavBarSh';
 import { Center, Flex, Text, Box, InputGroup,InputLeftAddon, Input, InputRightAddon, Button, Checkbox, Link} from '@chakra-ui/react';
 import { ShopRoute, HomeRoute, AuthRoute } from '../utils/consts';
+import { Context } from '../index'
+import { useContext,useState } from 'react';
 const AuthPage = () =>{
+    const { store } = useContext(Context);
+    const [email, setEmail] = useState(' ');
+    const [password, setPassword] = useState(' ');
+    const handleLogin = async (email, password) => {
+        try{
+            await store. login(email, password);
+            if (store.isAuth) {
+                alert ('Вы залогинены') 
+            } else {
+                store.setError('Incorrect login or pass. Try again!')
+                alert ('Ошибка') 
+            }
+        } catch (e) {
+            console.log('An error ocured during login.')
+        }
+    }
     return(
         <Flex
             width={'100%'}
@@ -33,7 +51,9 @@ const AuthPage = () =>{
                             <InputLeftAddon>
                             +375
                             </InputLeftAddon>
-                            <Input type='tel' placeholder='phone num' />
+                            <Input type='tel' placeholder='phone num'  
+                            onChange={e=> setEmail(e.target.value)} 
+                            value={email} />
                         </InputGroup>
 
 

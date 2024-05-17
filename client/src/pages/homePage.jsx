@@ -10,7 +10,7 @@ import CardItem from '../components/cardItem';
 import CardItem2 from '../components/cardItem2';
 import Loader from '../components/Loader';
 import { useEffect, useState } from 'react'; 
-
+import { observer } from 'mobx-react-lite';
 
 
  
@@ -112,4 +112,4 @@ const HomePage = () =>{
     
 }
 
-export default HomePage;
+export default observer (HomePage);

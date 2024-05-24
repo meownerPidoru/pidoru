@@ -9,21 +9,26 @@ import menu from '../components/menu';
 import CardItem from '../components/cardItem';
 import CardItem2 from '../components/cardItem2';
 import Loader from '../components/Loader';
-import { useEffect, useState } from 'react'; 
+import { useContext, useEffect, useState } from 'react'; 
 import { observer } from 'mobx-react-lite';
+import { Context } from '../index';
 
 
  
 const HomePage = () =>{ 
     const [isLoading, setIsLoading] = useState(true); 
+    const {store} = useContext (Context);
  
     useEffect(() => { 
-        const fetchData = async () => { 
-            await new Promise(resolve => setTimeout(resolve, 1000)); 
+        const checkAuth = async () => { 
+            if(localStorage.getItem('token')){
+                await store.checkAuth();
+            }
             setIsLoading(false) 
         } 
-        fetchData(); 
-    }, []) 
+        checkAuth ();
+    }, [store])
+
  
     return( 
         <> 
@@ -72,8 +77,8 @@ const HomePage = () =>{
                         id='about'
                     >
                         <Flex backgroundColor={'#45310c'} padding={'10px 50px'} flexDirection={'column'} justifyContent={'center'} h={'200vh'} w={'100%'} margin={'30px 0px 20px 0px'}> 
-                        <Text fontSize={'40px'} color={'#bfa471'}>Where are your sir?</Text> 
-                        <AspectRatio ratio={16 / 9} width={"100%"} h={800} > 
+                        <Text fontSize={'40px'} mt={'700px'} color={'#bfa471'}>Where are your sir?</Text> 
+                        <AspectRatio ratio={16 / 9} width={"100%"} h={800} mt={'60px'}> 
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38946.80405791186!2d23.81995275841609!3d52.403499904577785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4720559c6df3f967%3A0x2cc7ba71f743e569!2z0JrQsNC80LXQvdC10YYsINCR0YDQtdGB0YLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjA!5e0!3m2!1sru!2sby!4v1711123453690!5m2!1sru!2sby"  ></iframe> 
                         </AspectRatio> 
                         <Box>

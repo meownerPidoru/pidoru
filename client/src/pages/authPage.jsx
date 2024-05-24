@@ -1,17 +1,21 @@
 import NavBarSh from '../components/NavBarSh';
-import { Center, Flex, Text, Box, InputGroup,InputLeftAddon, Input, InputRightAddon, Button, Checkbox, Link} from '@chakra-ui/react';
-import { ShopRoute, HomeRoute, AuthRoute } from '../utils/consts';
+import { Center, Flex, Text, Box, InputGroup,InputLeftAddon, Input, InputRightAddon, Button, Checkbox} from '@chakra-ui/react';
+import { ShopRoute, HomeRoute, AuthRoute,RegisterRoute } from '../utils/consts';
 import { Context } from '../index'
 import { useContext,useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const AuthPage = () =>{
     const { store } = useContext(Context);
-    const [email, setEmail] = useState(' ');
-    const [password, setPassword] = useState(' ');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate()
+
     const handleLogin = async (email, password) => {
         try{
-            await store. login(email, password);
+            await store.login(email, password);
             if (store.isAuth) {
-                alert ('Вы залогинены') 
+                navigate(HomeRoute)
             } else {
                 store.setError('Incorrect login or pass. Try again!')
                 alert ('Ошибка') 
@@ -46,37 +50,24 @@ const AuthPage = () =>{
                     <Text textAlign={'center'} margin={'30px 0px 30px 0px'} fontSize='4xl' > <b>Sing in</b></Text>             
 
                     <Checkbox defaultChecked margin={'0px 0px 20px 0px'}>ты Беларус?</Checkbox>
-                   
-                    <InputGroup w={'100%'} width={'250px'} paddingLeft={'50px'}  >
-                            <InputLeftAddon>
-                            +375
-                            </InputLeftAddon>
-                            <Input type='tel' placeholder='phone num'  
-                            onChange={e=> setEmail(e.target.value)} 
-                            value={email} />
-                        </InputGroup>
-
-
                         <InputGroup size='sm' w={'100%'} width={'250px'} paddingLeft={'50px'} marginTop='10px' >
-                            <Input placeholder='e-mail' />
-                            <InputRightAddon>
-                            @gmail.com
-                            </InputRightAddon>
+                            <Input 
+                                placeholder='e-mail'
+                                onChange={e=> setEmail(e.target.value)} 
+                                value={email} 
+                            />
                         </InputGroup>
                        < InputGroup size='sm' w={'100%'} width={'250px'} paddingLeft={'50px'} marginTop='10px'>
-                            <Input placeholder='password' />
+                            <Input 
+                                placeholder='password'
+                                onChange={e=> setPassword(e.target.value)} 
+                                value={password} 
+                            />
                         </InputGroup>
-                        <Button colorScheme='teal' variant='solid' marginTop='10px'>
+                        <Button colorScheme='teal' variant='solid' marginTop='10px'   onClick={() => {handleLogin(email, password)}} >
                         Sing In
                         </Button>
-                        <Link
-                            >
-                        <Box>
-                        <Button to={HomeRoute} colorScheme='teal' variant='link' marginTop='10px'>
-                            уходи.
-                        </Button>
-                        </Box>
-                        </Link>
+                        <Link to={RegisterRoute}>Register</Link>
                     </Box>
                     
                 </Flex>
